@@ -29,6 +29,20 @@ public abstract class BaseActivity extends AppCompatActivity {
     private DisposableObserver mDisposableObserver;
 
 
+    private class ReceiveEvent extends DisposableObserver{
+        @Override
+        public void onNext(Object o) {
+            receiveEvent(o);
+        }
+
+        @Override
+        public void onError(Throwable e) {}
+
+        @Override
+        public void onComplete() {}
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if(savedInstanceState != null){
@@ -61,22 +75,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         mSubject = RxEvent.getInstance().registerEvent(registerEvent());
         mDisposableObserver = new ReceiveEvent();
         mSubject.subscribe(mDisposableObserver);
-    }
-
-
-    private class ReceiveEvent extends DisposableObserver{
-        @Override
-        public void onNext(Object o) {
-            receiveEvent(o);
-        }
-
-        @Override
-        public void onError(Throwable e) {
-        }
-
-        @Override
-        public void onComplete() {
-        }
     }
 
 
