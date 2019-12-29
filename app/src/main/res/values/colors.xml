@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4CCBCA</color>
+    <color name="colorPrimaryDark">#4CCBCA</color>
+    <color name="colorAccent">#4CCBCA</color>
+
+    <color name="app_bg">#eee</color>
+    <color name="white">#fff</color>
+    <color name="shallow_white">#80ffffff</color>
+    <color name="black">#000000</color>
+    <color name="gray">#aaa</color>
+    <color name="red">#FF0000</color>
+    <color name="translucent">#00000000</color>
+    <color name="toolbar_bg">#2a3575</color>
+    <color name="_0091ea">#0091ea</color>
+    <color name="_009a61">#009a61</color>
+    <color name="_a5a9aa">#a5a9aa</color>
+    <color name="_2e3135">#2e3135</color>
+    <color name="_333333">#333333</color>
+    <color name="_767676">#767676</color>
+    <color name="_60ffffff">#60ffffff</color>
+    <color name="_20000000">#20000000</color>
+    <color name="_10000000">#10000000</color>
+    <color name="_484848">#484848</color>
+    <color name="_999999">#999999</color>
+</resources>
