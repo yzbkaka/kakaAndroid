@@ -11,7 +11,7 @@ import com.example.yzbkaka.kakaAndroid.core.view.IView;
 
 public abstract class BasePresenterFragment<P extends BasePresenter> extends BaseFragment implements IView {
 
-    private P mPresenter;
+    protected P mPresenter;
 
 
     @Override
@@ -58,5 +58,21 @@ public abstract class BasePresenterFragment<P extends BasePresenter> extends Bas
 
 
     protected abstract P createPresenter();
+
+
+    @Override
+    public void showLoading(String msg) {}
+
+    @Override
+    public void hideLoading() {}
+
+    @Override
+    public void showFail(String msg) {}
+
+    @Override
+    public void showError() {}
+
+    @Override
+    public void showEmpty() {}
 
 }
