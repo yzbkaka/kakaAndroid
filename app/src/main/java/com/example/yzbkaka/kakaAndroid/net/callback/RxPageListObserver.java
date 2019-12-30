@@ -36,7 +36,7 @@ public abstract class RxPageListObserver<T> extends RxBaseObserver<PageListData<
             if(mListData.isOver()){  //该页结束
                 mListDataView.showNoMore();
             }
-            else{
+            else{  //加载更多分页
                 mListDataView.autoLoadMore();
             }
             onSuccess(mListData.getDatas());
