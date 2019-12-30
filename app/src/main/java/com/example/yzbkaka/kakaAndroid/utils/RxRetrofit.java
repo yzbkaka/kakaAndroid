@@ -16,4 +16,11 @@ public class RxRetrofit {
     private Retrofit retrofit;
 
     private static ApiServer apiServer;
+
+
+    private static final class Holder{
+        private static final RxRetrofit INSTANCE = new RxRetrofit();
+    }
+
+
 }

@@ -21,6 +21,10 @@ import retrofit2.http.Url;
  * Created by yzbkaka on 19-12-29.
  */
 
+
+/**
+ * 网络请求
+ */
 public interface ApiServer {
 
     /**

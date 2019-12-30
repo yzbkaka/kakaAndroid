@@ -9,6 +9,7 @@ import com.example.yzbkaka.kakaAndroid.bean.Banner;
 import com.example.yzbkaka.kakaAndroid.bean.BaseBean;
 import com.example.yzbkaka.kakaAndroid.bean.HomeData;
 import com.example.yzbkaka.kakaAndroid.bean.PageListData;
+import com.example.yzbkaka.kakaAndroid.net.callback.RxPageListObserver;
 
 import java.util.List;
 
