@@ -1,4 +1,4 @@
-package com.example.yzbkaka.kakaAndroid.ui.base.adapter;
+package com.example.yzbkaka.kakaAndroid.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;

@@ -14,7 +14,7 @@ import com.example.yzbkaka.kakaAndroid.R;
 import com.example.yzbkaka.kakaAndroid.common.Const;
 import com.example.yzbkaka.kakaAndroid.core.presenter.BasePresenter;
 import com.example.yzbkaka.kakaAndroid.core.view.IPageLoadDataView;
-import com.example.yzbkaka.kakaAndroid.ui.base.adapter.BaseListAdapter;
+import com.example.yzbkaka.kakaAndroid.ui.adapter.BaseListAdapter;
 import com.example.yzbkaka.kakaAndroid.utils.ToastUtils;
 import com.example.yzbkaka.kakaAndroid.widget.LMRecyclerView;
 import com.example.yzbkaka.kakaAndroid.widget.StatusLayout;
