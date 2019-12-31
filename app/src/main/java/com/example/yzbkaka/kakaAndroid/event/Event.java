@@ -4,6 +4,10 @@ package com.example.yzbkaka.kakaAndroid.event;
  * Created by yzbkaka on 19-12-29.
  */
 
+
+/**
+ * 事件类
+ */
 public class Event {
 
     public enum Type {

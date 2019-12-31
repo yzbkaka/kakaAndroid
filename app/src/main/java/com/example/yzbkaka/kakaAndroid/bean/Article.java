@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 文章实体类
  */
-public class Article {
+public class Article implements Serializable {
 
     /**
      * 数据举例：
@@ -40,6 +40,7 @@ public class Article {
      * visible : 1
      * zan : 0
      */
+
     private String apkLink;
 
     private String author;

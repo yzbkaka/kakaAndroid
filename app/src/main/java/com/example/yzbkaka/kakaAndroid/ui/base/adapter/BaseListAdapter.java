@@ -32,7 +32,7 @@ public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<ListDataHo
     /**
      * 刷新单条数据
      */
-    public void notifyItemData(int position,LMRecyclerView recyclerView){
+    public void notifyItemDataChanged(int position,LMRecyclerView recyclerView){
         recyclerView.notifyItemChanged(position);
     }
 

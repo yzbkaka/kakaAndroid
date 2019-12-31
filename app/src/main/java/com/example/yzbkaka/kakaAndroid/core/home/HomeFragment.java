@@ -1,5 +1,7 @@
 package com.example.yzbkaka.kakaAndroid.core.home;
 
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -7,6 +9,8 @@ import com.example.yzbkaka.kakaAndroid.R;
 import com.example.yzbkaka.kakaAndroid.bean.Article;
 import com.example.yzbkaka.kakaAndroid.bean.Banner;
 import com.example.yzbkaka.kakaAndroid.common.Const;
+import com.example.yzbkaka.kakaAndroid.event.Event;
+import com.example.yzbkaka.kakaAndroid.event.RxEvent;
 import com.example.yzbkaka.kakaAndroid.ui.base.BaseAbListFragment;
 import com.example.yzbkaka.kakaAndroid.ui.base.adapter.BannerAdapter;
 import com.example.yzbkaka.kakaAndroid.ui.base.adapter.BaseListAdapter;
@@ -37,7 +41,7 @@ public class HomeFragment extends BaseAbListFragment<HomePresenter,Article> impl
     /**
      * banner组
      */
-    private BannerViewPager mBannerViewPager;
+    private BannerViewPager mViewPager;
 
     private BannerAdapter mBannerAdapter;
 
@@ -60,19 +64,13 @@ public class HomeFragment extends BaseAbListFragment<HomePresenter,Article> impl
     @Override
     protected View initHeaderView(){
         View headerView = LayoutInflater.from(getActivity()).inflate(R.layout.main_header_banner,mRecyclerView,false);
-        mBannerViewPager = headerView.findViewById(R.id.viewPager);
+        mViewPager = headerView.findViewById(R.id.viewPager);
         return headerView;
     }
 
 
     private void setCurrentItem(final int position){
-        mBannerViewPager.setCurrentItem(position);
-    }
-
-
-    @Override
-    public int getArticleId() {
-        return id;
+        mViewPager.setCurrentItem(position);
     }
 
 
@@ -132,9 +130,9 @@ public class HomeFragment extends BaseAbListFragment<HomePresenter,Article> impl
      */
     public void notifyDatas(){
         if(mBannerAdapter == null){
-            mBannerAdapter = new BannerAdapter(mListData);
-            mBannerViewPager.setAdapter(mBannerAdapter);
-            mBannerViewPager.setOffscreenPageLimit(mBannerList.size());
+            mBannerAdapter = new BannerAdapter(mBannerList);
+            mViewPager.setAdapter(mBannerAdapter);
+            mViewPager.setOffscreenPageLimit(mBannerList.size());
             setCurrentItem(1000 * mBannerList.size());
         }else{
             mBannerAdapter.notifyDatas(mBannerList);
@@ -162,5 +160,78 @@ public class HomeFragment extends BaseAbListFragment<HomePresenter,Article> impl
     }
 
 
+    @Override
+    public int getArticleId() {
+        return id;
+    }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewPager.start();
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mViewPager.stop();
+    }
+
+
+    /**
+     * 对fragment显示进行监听
+     */
+    @Override
+    public void onHiddenChanged(boolean hidden){
+        if (hidden) {  //隐藏
+            mViewPager.stop();
+        } else {  //显示
+            mViewPager.start();
+        }
+    }
+
+
+    @Override
+    protected void receiveEvent(Object object){
+        Event mEvent = (Event)object;
+        if(mEvent.type == Event.Type.REFRESH_ITEM){  //事件是收藏子项
+            Article bean = (Article) mEvent.object;
+            for (int i = 0; i < mListData.size(); i++) {
+                if (bean.equals(mListData.get(i))) {
+                    position = i;
+                    notifyItemData(bean.isCollect(), getString(R.string.collect_success));
+                }
+            }
+        }else if (mEvent.type == Event.Type.SCROLL_TOP){  //跳到顶部
+            mRecyclerView.smoothScrollToPosition(0);
+        }else if (mEvent.type == Event.Type.REFRESH_LIST){  //刷新列表
+            refreshData();
+        }
+    }
+
+
+    @Override
+    protected String registerEvent() {
+        return Const.EVENT_ACTION.HOME;
+    }
+
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        mRecyclerView.addOnScrollListener(onScrollListener);
+    }
+
+
+    /**
+     * 滑动监听
+     */
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            RxEvent.getInstance().postEvent(Const.EVENT_ACTION.MAIN,new Event(Event.Type.SCALE,dy));
+        }
+    };
 }
