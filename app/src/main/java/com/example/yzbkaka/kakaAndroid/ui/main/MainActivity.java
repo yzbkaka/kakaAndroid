@@ -27,6 +27,7 @@ import com.example.yzbkaka.kakaAndroid.event.RxEvent;
 import com.example.yzbkaka.kakaAndroid.ui.base.BaseActivity;
 import com.example.yzbkaka.kakaAndroid.utils.ViewAnimatorHelper;
 
+
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private DrawerLayout mDrawerLayout;
@@ -67,7 +68,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);  //调用父类直接进行加载
         setContentView(R.layout.activity_main);
         //设置旋转开关
         ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,

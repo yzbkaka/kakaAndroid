@@ -17,9 +17,11 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * 网络请求工具类
+ * 发送网络请求
  */
 public class RxRetrofit {
 
@@ -53,5 +55,23 @@ public class RxRetrofit {
                 .addInterceptor(new RequestInterceptor())  //无网
                 .addNetworkInterceptor(new CacheInterceptor())  //有网
                 .build();
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(okHttpClient)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        apiServer = retrofit.create(ApiServer.class);
+    }
+
+
+    /**
+     * 获取ApiServer对象
+     */
+    public static ApiServer Api() {
+        if (apiServer == null)
+            throw new IllegalStateException("You must invoke init method first in Application");
+        return apiServer;
     }
 }

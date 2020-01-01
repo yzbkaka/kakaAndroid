@@ -4,6 +4,9 @@ package com.example.yzbkaka.kakaAndroid.core.view;
  * Created by yzbkaka on 19-12-29.
  */
 
+/**
+ * 列表view
+ */
 public interface IPageLoadDataView<T> extends IListDataView<T>{
 
     int getFirstPage();

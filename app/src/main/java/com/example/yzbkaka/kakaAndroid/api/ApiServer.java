@@ -61,7 +61,7 @@ public interface ApiServer {
      * 列表文章
      */
     @GET(UrlConstainer.HOME_LIST)
-    Observable<BaseBean<PageListData<Article>>> getHomeList();
+    Observable<BaseBean<PageListData<Article>>> getHomeList(@Path("page") int page);
 
 
     /**
