@@ -24,7 +24,6 @@ public class Const {
         public static final String PROJECT = "project";
         public static final String PROJECT_LIST = "project_list";
         public static final String SEARCH = "search";
-//        public static final String
     }
 
     //Intent传值

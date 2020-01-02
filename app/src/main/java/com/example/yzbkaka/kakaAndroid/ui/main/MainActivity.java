@@ -251,7 +251,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onResume(){
         super.onResume();
-        //setUserData();  //设置用户登录
+        setUserData();  //设置用户登录
     }
 
 
