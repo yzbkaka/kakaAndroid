@@ -7,9 +7,15 @@ package com.example.yzbkaka.kakaAndroid.application;
 
 import android.app.Application;
 
+
 /**
  * kakaAndroid全局配置
  */
 public class KApp extends Application {
 
+    @Override
+    public void onCreate(){
+        super.onCreate();
+        AppContext.initialize(this);
+    }
 }
