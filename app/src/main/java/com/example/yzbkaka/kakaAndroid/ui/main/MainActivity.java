@@ -70,10 +70,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);  //调用父类直接进行加载
         setContentView(R.layout.activity_main);
-        //设置旋转开关
+        //设置旋转开关，直接进行监听打开的和关闭
         ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
 
@@ -86,7 +85,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         Toast.makeText(MainActivity.this, "喜欢的文章", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.menu_about:
-                        Toast.makeText(MainActivity.this, "关于我们", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this,AboutActivity.class));
                         break;
                     case R.id.menu_exit:
                         Toast.makeText(MainActivity.this, "退出", Toast.LENGTH_SHORT).show();

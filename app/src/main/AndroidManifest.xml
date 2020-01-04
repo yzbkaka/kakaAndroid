@@ -20,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".ui.base.BaseActivity" />-->
-        <activity android:name=".web.WebViewActivity"></activity>
+        <!-- <activity android:name=".ui.base.BaseActivity" /> -->
+        <activity android:name=".web.WebViewActivity" />
+        <activity android:name=".ui.User.AboutUsActivity"></activity>
     </application>
 
 </manifest>
