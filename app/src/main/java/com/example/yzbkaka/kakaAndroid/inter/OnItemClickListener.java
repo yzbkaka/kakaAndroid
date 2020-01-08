@@ -5,5 +5,6 @@ package com.example.yzbkaka.kakaAndroid.inter;
  */
 
 public interface OnItemClickListener<T> {
+
     void onItemClick(int position,T bean);
 }

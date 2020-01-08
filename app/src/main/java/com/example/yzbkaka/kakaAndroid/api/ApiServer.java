@@ -4,6 +4,7 @@ import com.example.yzbkaka.kakaAndroid.bean.Article;
 import com.example.yzbkaka.kakaAndroid.bean.Banner;
 import com.example.yzbkaka.kakaAndroid.bean.BaseBean;
 import com.example.yzbkaka.kakaAndroid.bean.PageListData;
+import com.example.yzbkaka.kakaAndroid.bean.Tree;
 import com.example.yzbkaka.kakaAndroid.bean.User;
 import com.example.yzbkaka.kakaAndroid.common.UrlConstainer;
 
@@ -15,6 +16,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 /**
@@ -76,4 +78,19 @@ public interface ApiServer {
      */
     @POST(UrlConstainer.UNCOLLECT_ARTICLE)
     Observable<BaseBean<String>> unCollectArticle(@Path("id") int id);
+
+
+    /**
+     * 知识体系分类
+     */
+    @GET(UrlConstainer.TREE)
+    Observable<BaseBean<List<Tree>>> getTree();
+
+
+    /**
+     * 知识体系列表
+     */
+    @GET(UrlConstainer.TREE_LIST)
+    Observable<BaseBean<PageListData<Article>>> getTreeList(@Path("page") int page, @Query("cid") int cid);
+
 }

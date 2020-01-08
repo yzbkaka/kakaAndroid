@@ -23,7 +23,8 @@
         </activity>
         <!-- <activity android:name=".ui.base.BaseActivity" /> -->
         <activity android:name=".web.WebViewActivity" />
-        <activity android:name=".ui.User.AboutUsActivity"></activity>
+        <activity android:name=".ui.User.AboutUsActivity" />
+        <activity android:name=".ui.tree.TreeActivity"></activity>
     </application>
 
 </manifest>

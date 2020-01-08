@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.example.yzbkaka.kakaAndroid.R;
 import com.example.yzbkaka.kakaAndroid.common.Const;
 import com.example.yzbkaka.kakaAndroid.core.home.HomeFragment;
-import com.example.yzbkaka.kakaAndroid.core.tree.TreeFragment;
+import com.example.yzbkaka.kakaAndroid.ui.tree.TreeFragment;
 import com.example.yzbkaka.kakaAndroid.event.Event;
 import com.example.yzbkaka.kakaAndroid.event.RxEvent;
 import com.example.yzbkaka.kakaAndroid.ui.User.AboutUsActivity;
