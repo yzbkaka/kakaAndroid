@@ -24,6 +24,7 @@ import com.example.yzbkaka.kakaAndroid.core.home.HomeFragment;
 import com.example.yzbkaka.kakaAndroid.core.tree.TreeFragment;
 import com.example.yzbkaka.kakaAndroid.event.Event;
 import com.example.yzbkaka.kakaAndroid.event.RxEvent;
+import com.example.yzbkaka.kakaAndroid.ui.User.AboutUsActivity;
 import com.example.yzbkaka.kakaAndroid.ui.base.BaseActivity;
 import com.example.yzbkaka.kakaAndroid.utils.ViewAnimatorHelper;
 
@@ -68,8 +69,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);  //调用父类直接进行加载
-        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
+        //不能调用setContentView(R.layout.activity_main)，否则无法加载Toolbar
         //设置旋转开关，直接进行监听打开的和关闭
         ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -85,10 +86,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         Toast.makeText(MainActivity.this, "喜欢的文章", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.menu_about:
-                        startActivity(new Intent(MainActivity.this,AboutActivity.class));
+                        startActivity(new Intent(MainActivity.this,AboutUsActivity.class));
                         break;
                     case R.id.menu_exit:
-                        Toast.makeText(MainActivity.this, "退出", Toast.LENGTH_SHORT).show();
+                        exitToLogin();
                         break;
                 }
                 return true;
@@ -139,10 +140,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         action = Const.EVENT_ACTION.SYSTEM;
                         break;
                     case 2:
-                        ((ChaptersFragment)fragments[2]).scrollToTop();
+                        //((ChaptersFragment)fragments[2]).scrollToTop();
                         return;
                     case 3:
-                        ((ProjectFragment)fragments[3]).scrollToTop();
+                        //((ProjectFragment)fragments[3]).scrollToTop();
                         return;
                 }
                 RxEvent.getInstance().postEvent(action,new Event(Event.Type.SCROLL_TOP));  //传递事件
@@ -195,7 +196,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * 初始化fragment
      */
     private void initFragments(){
-        fragments = new Fragment[]{new HomeFragment(), new TreeFragment(),new ChaptersFragment(),new ProjectFragment()};
+        fragments = new Fragment[]{new HomeFragment(), new TreeFragment()/*,new ChaptersFragment(),new ProjectFragment()*/};
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.container,fragments[0]).show(fragments[0]).commitAllowingStateLoss();
     }
@@ -222,7 +223,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     /**
-     * 进行缩放/恢复
+     * 进行底部标识的缩放/恢复
      */
     private void scaleView(){
         btns[currentPosition].animate().scaleX(0.9f).scaleY(0.9f)
@@ -272,6 +273,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
         }
         return super.onOptionsItemSelected(menuItem);
+    }
+
+
+    /**
+     * 设置用户登录
+     */
+    private void setUserData(){
+        mNameView.setText("未登录");
+    }
+
+
+    /**
+     * 设置退出
+     */
+    private void exitToLogin(){
+        Toast.makeText(this, "退出登录！", Toast.LENGTH_SHORT).show();
     }
 
 

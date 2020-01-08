@@ -27,7 +27,7 @@ public class ArticleListAdapter extends BaseListAdapter<Article> {
     private OnArticleListItemClickListener listener;
 
 
-    public ArticleListAdapter(int type,OnArticleListItemClickListener listener){
+    public ArticleListAdapter(OnArticleListItemClickListener listener,int type){
         this.type = type;
         this.listener = listener;
     }
@@ -61,9 +61,9 @@ public class ArticleListAdapter extends BaseListAdapter<Article> {
         if(type == Const.LIST_TYPE.HOME || type == Const.LIST_TYPE.SEARCH){  //如果是主页或者是搜索的文章列表
             coverToArticleList(tv_type,tv_tag,img_collect,position,bean);
         }else if(type == Const.LIST_TYPE.TREE){  //知识体系
-            有问题;
+            //有问题;
         }else if(type == Const.LIST_TYPE.COLLECT){  //收藏的文章
-            有问题;
+            //有问题;
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

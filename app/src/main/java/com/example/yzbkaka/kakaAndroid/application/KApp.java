@@ -9,7 +9,7 @@ import android.app.Application;
 
 
 /**
- * kakaAndroid全局配置
+ * kakaAndroid全局配置，需要在AndroidManifest里面进行配置
  */
 public class KApp extends Application {
 

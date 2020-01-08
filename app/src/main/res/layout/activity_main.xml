@@ -81,11 +81,11 @@
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/btn_scroll_top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_above="@+id/bottom_tab"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:clickable="true"
                 android:src="@drawable/ic_arrow_upward_white_24dp"

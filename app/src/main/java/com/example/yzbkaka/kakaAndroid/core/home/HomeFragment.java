@@ -96,7 +96,7 @@ public class HomeFragment extends BaseAbListFragment<HomePresenter,Article> impl
      */
     @Override
     protected BaseListAdapter<Article> getListAdapter() {
-        return new ArticleListAdapter(Const.LIST_TYPE.HOME,this);
+        return new ArticleListAdapter(this,Const.LIST_TYPE.HOME);
     }
 
 

@@ -12,7 +12,7 @@ import android.view.animation.Animation;
 
 
 /**
- * 设置FloatActionBar的显示
+ * 设置FloatActionBar的显示/隐藏
  */
 public class ViewAnimatorHelper {
 
@@ -42,7 +42,7 @@ public class ViewAnimatorHelper {
 
 
     public void hideFloatActionButton(){
-        viewPropertyAnimator.scaleX(0.0f).scaleY(0.0f).alpha(0.0f).setListener((Animator.AnimatorListener) animationListener);
+        viewPropertyAnimator.scaleX(0.0f).scaleY(0.0f).alpha(0.0f).setListener(animationListener);
     }
 
 
@@ -52,19 +52,23 @@ public class ViewAnimatorHelper {
     }
 
 
-    private Animation.AnimationListener animationListener = new Animation.AnimationListener() {
+    private Animator.AnimatorListener animationListener = new Animator.AnimatorListener() {
+
         @Override
-        public void onAnimationStart(Animation animation) {
+        public void onAnimationStart(Animator animator) {
             isAnimating = true;
         }
 
         @Override
-        public void onAnimationEnd(Animation animation) {
+        public void onAnimationEnd(Animator animator) {
             isAnimating = false;
             view.setVisibility(View.INVISIBLE);
         }
 
         @Override
-        public void onAnimationRepeat(Animation animation) {}
+        public void onAnimationCancel(Animator animator) {}
+
+        @Override
+        public void onAnimationRepeat(Animator animator) {}
     };
 }

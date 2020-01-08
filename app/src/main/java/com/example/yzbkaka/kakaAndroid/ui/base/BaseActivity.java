@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -58,6 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         mContainerLayout = (FrameLayout)findViewById(R.id.frameLayout);
         boolean isToolbar = initToolbar();
+        Log.d("isToolbar", String.valueOf(isToolbar));
         if (isToolbar) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -91,7 +93,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void initContent(int layoutId){
         if(layoutId != 0){
             View contentView = LayoutInflater.from(this).inflate(layoutId,mContainerLayout,false);
-            mContainerLayout.addView(contentView);
+            mContainerLayout.addView(contentView);  //加载进去
             initViews();
         }
     }
