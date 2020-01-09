@@ -3,6 +3,7 @@ package com.example.yzbkaka.kakaAndroid.api;
 import com.example.yzbkaka.kakaAndroid.bean.Article;
 import com.example.yzbkaka.kakaAndroid.bean.Banner;
 import com.example.yzbkaka.kakaAndroid.bean.BaseBean;
+import com.example.yzbkaka.kakaAndroid.bean.Chapter;
 import com.example.yzbkaka.kakaAndroid.bean.PageListData;
 import com.example.yzbkaka.kakaAndroid.bean.Tree;
 import com.example.yzbkaka.kakaAndroid.bean.User;
@@ -93,4 +94,17 @@ public interface ApiServer {
     @GET(UrlConstainer.TREE_LIST)
     Observable<BaseBean<PageListData<Article>>> getTreeList(@Path("page") int page, @Query("cid") int cid);
 
+
+    /**
+     * 获取公众号
+     */
+    @GET(UrlConstainer.CHAPTERS)
+    Observable<BaseBean<List<Chapter>>> getChapters();
+
+
+    /**
+     * 获取公众号文章列表
+     */
+    @GET(UrlConstainer.CHAPTER_LIST)
+    Observable<BaseBean<PageListData<Article>>> getChapterList(@Path("page") int page,@Path("id") int id);
 }

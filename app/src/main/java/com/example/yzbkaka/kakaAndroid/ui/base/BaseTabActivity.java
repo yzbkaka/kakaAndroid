@@ -14,7 +14,7 @@ import android.support.v4.view.ViewPager;
 import com.example.yzbkaka.kakaAndroid.R;
 
 /**
- * 基础选项卡
+ * 基础选项卡(活动)
  */
 public abstract class BaseTabActivity extends BaseActivity {
 
