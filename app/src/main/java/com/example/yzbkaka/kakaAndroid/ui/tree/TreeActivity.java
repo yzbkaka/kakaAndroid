@@ -1,5 +1,6 @@
 package com.example.yzbkaka.kakaAndroid.ui.tree;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.example.yzbkaka.kakaAndroid.utils.ViewAnimatorHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class TreeActivity extends BaseTabActivity {
 
@@ -57,12 +59,13 @@ public class TreeActivity extends BaseTabActivity {
     }
 
 
+    @SuppressLint("RestrictedApi")
     @Override
-    protected FragmentPagerAdapter createFragmentPagerAdapter() {
+    protected FragmentPagerAdapter createFragPagerAdapter() {
         btn_scroll_top.setVisibility(View.VISIBLE);
         btn_scroll_top.setOnClickListener(onScrollTopListener);
         viewPager.setOffscreenPageLimit(mTreeDatas.size());
-        return new TreeFragPagerAdapter(getSupportFragmentManager(), mTreeDatas);
+        return new TreeFragPagerAdapter(getSupportFragmentManager(), mTreeDatas);  //加入选项卡和标题
     }
 
 

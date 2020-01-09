@@ -61,7 +61,7 @@ public class ArticleListAdapter extends BaseListAdapter<Article> {
         if(type == Const.LIST_TYPE.HOME || type == Const.LIST_TYPE.SEARCH){  //如果是主页或者是搜索的文章列表
             coverToArticleList(tv_type,tv_tag,img_collect,position,bean);
         }else if(type == Const.LIST_TYPE.TREE){  //知识体系
-            //有问题;
+            coverToTreeList(tv_type,tv_tag,img_collect,position,bean);
         }else if(type == Const.LIST_TYPE.COLLECT){  //收藏的文章
             //有问题;
         }
@@ -106,6 +106,24 @@ public class ArticleListAdapter extends BaseListAdapter<Article> {
             public void onClick(View view) {
                 if(listener != null){
                     listener.onCollectClick(position,bean.getId());
+                }
+            }
+        });
+    }
+
+
+    /**
+     * tree
+     */
+    private void coverToTreeList(TextView tv_type, TextView tv_tag, ImageView img_collect, final int position, final Article bean){
+        tv_type.setText(String.format("%1$s / %2$s",bean.getSuperChapterName(), bean.getChapterName()));
+        tv_tag.setVisibility(View.GONE);
+        img_collect.setImageResource(bean.isCollect() ? R.drawable.ic_favorite_light_24dp : R.drawable.ic_favorite_gray_24dp);
+        img_collect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onCollectClick(position, bean.getId());
                 }
             }
         });

@@ -28,7 +28,7 @@ public abstract class BaseTabActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle){
         super.onCreate(bundle);
-        FragmentPagerAdapter fragmentPagerAdapter = createFragmentPagerAdapter();
+        FragmentPagerAdapter fragmentPagerAdapter = createFragPagerAdapter();
         if(fragmentPagerAdapter != null){
             viewPager.setAdapter(fragmentPagerAdapter);  //设置适配器
             tabLayout.setupWithViewPager(viewPager);  //设置pager
@@ -38,7 +38,7 @@ public abstract class BaseTabActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId(){
-        return R.layout.activity_tree;
+        return R.layout.base_tab_layout;
     }
 
 
@@ -50,5 +50,5 @@ public abstract class BaseTabActivity extends BaseActivity {
     }
 
 
-    protected abstract FragmentPagerAdapter createFragmentPagerAdapter();
+    protected abstract FragmentPagerAdapter createFragPagerAdapter();
 }
