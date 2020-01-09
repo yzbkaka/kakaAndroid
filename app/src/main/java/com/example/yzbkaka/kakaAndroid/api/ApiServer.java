@@ -5,6 +5,7 @@ import com.example.yzbkaka.kakaAndroid.bean.Banner;
 import com.example.yzbkaka.kakaAndroid.bean.BaseBean;
 import com.example.yzbkaka.kakaAndroid.bean.Chapter;
 import com.example.yzbkaka.kakaAndroid.bean.PageListData;
+import com.example.yzbkaka.kakaAndroid.bean.ProjectCate;
 import com.example.yzbkaka.kakaAndroid.bean.Tree;
 import com.example.yzbkaka.kakaAndroid.bean.User;
 import com.example.yzbkaka.kakaAndroid.common.UrlConstainer;
@@ -107,4 +108,18 @@ public interface ApiServer {
      */
     @GET(UrlConstainer.CHAPTER_LIST)
     Observable<BaseBean<PageListData<Article>>> getChapterList(@Path("page") int page,@Path("id") int id);
+
+
+    /**
+     * 项目分类
+     */
+    @GET(UrlConstainer.PROJECT_CATE)
+    Observable<BaseBean<List<ProjectCate>>> getProjectCate();
+
+
+    /**
+     * 项目列表
+     */
+    @GET(UrlConstainer.PROJECT)
+    Observable<BaseBean<PageListData<Article>>> getProjectList(@Path("page") int page,@Query("cid") int cid);
 }

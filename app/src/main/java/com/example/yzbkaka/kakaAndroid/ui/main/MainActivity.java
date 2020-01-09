@@ -22,6 +22,7 @@ import com.example.yzbkaka.kakaAndroid.R;
 import com.example.yzbkaka.kakaAndroid.common.Const;
 import com.example.yzbkaka.kakaAndroid.core.home.HomeFragment;
 import com.example.yzbkaka.kakaAndroid.ui.chapter.ChaptersFragment;
+import com.example.yzbkaka.kakaAndroid.ui.project.ProjectFragment;
 import com.example.yzbkaka.kakaAndroid.ui.tree.TreeFragment;
 import com.example.yzbkaka.kakaAndroid.event.Event;
 import com.example.yzbkaka.kakaAndroid.event.RxEvent;
@@ -144,7 +145,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         ((ChaptersFragment)fragments[2]).scrollToTop();
                         return;
                     case 3:
-                        //((ProjectFragment)fragments[3]).scrollToTop();
+                        ((ProjectFragment)fragments[3]).scrollToTop();
                         return;
                 }
                 RxEvent.getInstance().postEvent(action,new Event(Event.Type.SCROLL_TOP));  //传递事件
@@ -197,7 +198,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * 初始化fragment
      */
     private void initFragments(){
-        fragments = new Fragment[]{new HomeFragment(), new TreeFragment(),new ChaptersFragment()/*,new ProjectFragment()*/};
+        fragments = new Fragment[]{new HomeFragment(), new TreeFragment(),new ChaptersFragment(),new ProjectFragment()};
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.container,fragments[0]).show(fragments[0]).commitAllowingStateLoss();
     }
