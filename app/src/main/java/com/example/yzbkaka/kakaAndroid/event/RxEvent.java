@@ -64,11 +64,11 @@ public class RxEvent {
     /**
      * 注销事件
      */
-    public void unRegisterEvent(String mAction, PublishSubject mSubject, DisposableObserver mDisposable){
+    public void unRegisterEvent(String mAction, PublishSubject mSubject, DisposableObserver mDisposableObserver){
         List<PublishSubject> mSubjectList = mSubjectMaps.get(mAction);
         //中断事件
-        if (mDisposable != null && !mDisposable.isDisposed())
-            mDisposable.dispose();
+        if (mDisposableObserver != null && !mDisposableObserver.isDisposed())
+            mDisposableObserver.dispose();  //进行切断
         if (mSubjectList != null){
             mSubjectList.remove(mSubject);
             if (mSubjectList.isEmpty()){

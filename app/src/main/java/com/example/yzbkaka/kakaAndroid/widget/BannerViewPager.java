@@ -85,7 +85,7 @@ public class BannerViewPager extends ViewPager {
         if (mHandler == null && !mIsRunning) {
             mHandler = new Handler();
             mTaskRunnable = new TaskRunnable(instance);
-            mHandler.postDelayed(mTaskRunnable, 6000);
+            mHandler.postDelayed(mTaskRunnable, 6000);  //设置时间
             mIsRunning = true;
         }
     }
@@ -104,7 +104,7 @@ public class BannerViewPager extends ViewPager {
 
 
     /**
-     * 设置选中
+     * 设置切换
      */
     private void setCurrentItem(){
         setCurrentItem(getCurrentItem() + 1, true);
@@ -185,7 +185,7 @@ public class BannerViewPager extends ViewPager {
             FixedSpeedScroll mScriller = new FixedSpeedScroll(getContext());
             Field field = clazz.getDeclaredField("mScroller");
             field.setAccessible(true);
-            field.set(this, mScriller);
+            field.set(this, mScriller);  //将ViewPager中的mScroller设置为mScriller
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchFieldException e) {

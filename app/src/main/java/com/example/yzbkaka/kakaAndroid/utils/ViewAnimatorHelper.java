@@ -18,6 +18,9 @@ public class ViewAnimatorHelper {
 
     private boolean isAnimating;
 
+    /**
+     * 并行执行动画
+     */
     private ViewPropertyAnimator viewPropertyAnimator;
 
     private View view;

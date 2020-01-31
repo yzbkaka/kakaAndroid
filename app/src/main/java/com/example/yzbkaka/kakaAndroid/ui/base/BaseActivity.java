@@ -76,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initContent(getLayoutId());
         mSubject = RxEvent.getInstance().registerEvent(registerEvent());
         mDisposableObserver = new ReceiveEvent();
-        mSubject.subscribe(mDisposableObserver);
+        mSubject.subscribe(mDisposableObserver);  //开启订阅
     }
 
 
@@ -92,7 +92,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private void initContent(int layoutId){
         if(layoutId != 0){
-            View contentView = LayoutInflater.from(this).inflate(layoutId,mContainerLayout,false);
+            View contentView = LayoutInflater.from(this).inflate(layoutId,null,false);
             mContainerLayout.addView(contentView);  //加载进去
             initViews();
         }

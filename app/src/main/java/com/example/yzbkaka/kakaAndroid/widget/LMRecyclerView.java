@@ -126,11 +126,11 @@ public class LMRecyclerView extends RecyclerView {
 
             if (layoutManager instanceof LinearLayoutManager) {
                 LinearLayoutManager linearLayout = (LinearLayoutManager) layoutManager;
-                int mLastChildPosition = linearLayout.findLastVisibleItemPosition();
-                int itemTotalCount = linearLayout.getItemCount();
-                View lastChildView = linearLayout.getChildAt(linearLayout.getChildCount() - 1);
-                int lastChildBottom = lastChildView.getBottom();
-                int recyclerBottom = getBottom();
+                int mLastChildPosition = linearLayout.findLastVisibleItemPosition();  //前面的数量
+                int itemTotalCount = linearLayout.getItemCount();  //总数量
+                View lastChildView = linearLayout.getChildAt(linearLayout.getChildCount() - 1);  //前面最后一个数量
+                int lastChildBottom = lastChildView.getBottom();  //得到最后的位置
+                int recyclerBottom = getBottom();  //控件的最后位置
                 if (mLastChildPosition == itemTotalCount - 1 && lastChildBottom == recyclerBottom) {
                     if (isCanLoadMore && listener != null) {
                         listener.loadMore();
@@ -166,21 +166,16 @@ public class LMRecyclerView extends RecyclerView {
 
         @Override
         public int getItemViewType(int position) {
-            if (mHeaderView != null && position == 0)
-                return VIEW_TYPE_HEADER;
-            if (isCanLoadMore && position == getItemCount() - 1)
-                return VIEW_TYPE_FOOTER;
+            if (mHeaderView != null && position == 0) return VIEW_TYPE_HEADER;
+            if (isCanLoadMore && position == getItemCount() - 1) return VIEW_TYPE_FOOTER;
             return VIEW_TYPE_NORMAL;
         }
 
 
         @Override
         public ListDataHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-            if (viewType == VIEW_TYPE_HEADER)
-                return ListDataHolder.createViewHolder(mHeaderView);
-            if (viewType == VIEW_TYPE_FOOTER)
-                return ListDataHolder.createViewHolder(parent, R.layout.item_root_footer);
+            if (viewType == VIEW_TYPE_HEADER) return ListDataHolder.createViewHolder(mHeaderView);
+            if (viewType == VIEW_TYPE_FOOTER) return ListDataHolder.createViewHolder(parent, R.layout.item_root_footer);
             return (ListDataHolder) mAdapter.onCreateViewHolder(parent, viewType);
         }
 
@@ -221,7 +216,7 @@ public class LMRecyclerView extends RecyclerView {
                 public void onClick(View v) {
                     if (!isReClickLoadMore) return;
                     if (listener != null) {
-                        showLoadMore();
+                        showLoadMore();  //点击再次进行加载
                         notifyDataSetChanged();
                         listener.reLoadMore();
                     }

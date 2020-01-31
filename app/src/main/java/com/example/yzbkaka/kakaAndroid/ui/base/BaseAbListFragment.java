@@ -93,7 +93,7 @@ public abstract class BaseAbListFragment<P extends BasePresenter, T> extends Bas
         super.onActivityCreated(savedInstanceState);
         mRefreshLayout.setOnRefreshListener(mOnRefreshListener);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setCanLoadMore(isCanLoadMore());
+        mRecyclerView.setCanLoadMore(isCanLoadMore());  //不允许自动加载更多
         mRecyclerView.addFooterAutoLoadMoreListener(this);
         mListAdapter = getListAdapter();
         if(mListAdapter != null){

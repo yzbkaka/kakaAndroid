@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mAvatarView;
 
-    private Button[] btns;
+    private Button[] buttons;
 
     private Fragment[] fragments;
 
@@ -116,17 +116,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mDrawerLayout =  findViewById(R.id.drawerLayout);
         mNavigationView =  findViewById(R.id.navigation_view);
         btn_scroll_top = findViewById(R.id.btn_scroll_top);
-        btns = new Button[4];
-        btns[0] = findViewById(R.id.btn_main);
-        btns[1] = findViewById(R.id.btn_system);
-        btns[2] = findViewById(R.id.btn_chapter);
-        btns[3] = findViewById(R.id.btn_project);
-        btns[0].setSelected(true);
+        buttons = new Button[4];
+        buttons[0] = findViewById(R.id.btn_main);
+        buttons[1] = findViewById(R.id.btn_system);
+        buttons[2] = findViewById(R.id.btn_chapter);
+        buttons[3] = findViewById(R.id.btn_project);
+        buttons[0].setSelected(true);
         for(int i = 0;i < 4;i++){
-            btns[i].setOnClickListener(this);
+            buttons[i].setOnClickListener(this);
             if(i != currentPosition){  //设置缩放
-                btns[i].setScaleX(0.9f);
-                btns[i].setScaleY(0.9f);
+                buttons[i].setScaleX(0.9f);
+                buttons[i].setScaleY(0.9f);
             }
         }
 
@@ -200,7 +200,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void initFragments(){
         fragments = new Fragment[]{new HomeFragment(), new TreeFragment(),new ChaptersFragment(),new ProjectFragment()};
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.container,fragments[0]).show(fragments[0]).commitAllowingStateLoss();
+        fragmentTransaction.add(R.id.container,fragments[0]).show(fragments[0]);
+        fragmentTransaction.commitAllowingStateLoss();  //提交
     }
 
 
@@ -210,13 +211,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void showCurrentFragment(int index){
         if (currentPosition != index) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.hide(fragments[currentPosition]);
+            fragmentTransaction.hide(fragments[currentPosition]);  //把之前的隐藏
             if (!fragments[index].isAdded()) {
                 fragmentTransaction.add(R.id.container, fragments[index]);
             }
             fragmentTransaction.show(fragments[index]).commit();  //进行切换展示
-            btns[currentPosition].setSelected(false);  //不再选中
-            btns[index].setSelected(true);  //设置选中
+            buttons[currentPosition].setSelected(false);  //不再选中
+            buttons[index].setSelected(true);  //设置选中
             scaleView();
             currentPosition = index;
             setCurrentTitle();
@@ -228,9 +229,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * 进行底部标识的缩放/恢复
      */
     private void scaleView(){
-        btns[currentPosition].animate().scaleX(0.9f).scaleY(0.9f)
+        buttons[currentPosition].animate().scaleX(0.9f).scaleY(0.9f)
                 .setDuration(150).start();
-        btns[index].animate().scaleX(1.0f).scaleY(1.0f)
+        buttons[index].animate().scaleX(1.0f).scaleY(1.0f)
                 .setDuration(150).start();
     }
 

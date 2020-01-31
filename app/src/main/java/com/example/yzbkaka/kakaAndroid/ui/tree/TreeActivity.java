@@ -64,7 +64,7 @@ public class TreeActivity extends BaseTabActivity {
     protected FragmentPagerAdapter createFragPagerAdapter() {
         btn_scroll_top.setVisibility(View.VISIBLE);
         btn_scroll_top.setOnClickListener(onScrollTopListener);
-        viewPager.setOffscreenPageLimit(mTreeDatas.size());
+        viewPager.setOffscreenPageLimit(mTreeDatas.size());  //设置选项卡的数量
         return new TreeFragPagerAdapter(getSupportFragmentManager(), mTreeDatas);  //加入选项卡和标题
     }
 
@@ -78,7 +78,6 @@ public class TreeActivity extends BaseTabActivity {
     };
 
 
-    //???
     public void scroll(int offsetY){
         if (offsetY > 0 && btn_scroll_top.getVisibility() != View.INVISIBLE && !viewAnimatorHelper.isAnimating()){
             viewAnimatorHelper.hideFloatActionButton();
